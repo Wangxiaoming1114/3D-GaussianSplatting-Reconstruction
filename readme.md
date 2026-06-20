@@ -112,24 +112,29 @@ pip install plyfile tqdm opencv-python pillow numpy
 
 ### 3.2 安装 3DGS 子模块
 
-3DGS 需要安装 CUDA 扩展模块：
+3DGS 需要安装两个 CUDA / C++ 扩展模块：
 
 ```bash
 pip install ./submodules/diff-gaussian-rasterization
 pip install ./submodules/simple-knn
-```
+````
 
-如果 `simple-knn` 子模块缺失，可以重新拉取：
+如果 `submodules/` 目录下缺少这两个子模块，需要先手动重新拉取两个子模块：
 
 ```bash
+
+# 拉取 diff-gaussian-rasterization
+git clone https://github.com/graphdeco-inria/diff-gaussian-rasterization.git submodules/diff-gaussian-rasterization
+
+# 拉取 simple-knn
 git clone https://github.com/camenduru/simple-knn.git submodules/simple-knn
-pip install ./submodules/simple-knn
+```
+
+请确保本机 `nvcc` 的 CUDA 版本与 PyTorch 使用的 CUDA 版本尽量一致。
+
 ```
 
 
-请确保本机 CUDA 编译环境与 PyTorch CUDA 版本尽量匹配。
-
----
 
 ## 4. 数据准备
 
